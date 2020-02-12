@@ -4,6 +4,25 @@ import 'package:intl/intl.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'Event.dart';
 
+final List<Event> eventsList =
+[
+  Event('assets/images/girlscriptlogo.jpg','assets/images/codecru_p.jpg',"Code Crusade", "GirlScript,Chennai",
+      DateTime.parse("2020-02-08 13:00:00Z"),
+      "Home",0,"https://www.girlscript.tech/"),
+  Event('assets/images/kzillalogo.jpg','assets/images/mozohack_p.jpg',"Mozohack Hackathon", "SRMKzilla",
+      DateTime.parse("2020-03-20 09:00:00Z"),
+      "SIIC, 5th Floor, BEL",0,"https://srmdsc.com/"),
+  Event('assets/images/girlscriptlogo.jpg','assets/images/soc_p.jpg',"Summer of Code", "GirlScript,Chennai",
+      DateTime.parse("2020-02-14 13:00:00Z"),
+      "Office",0,"https://www.girlscript.tech/"),
+  Event('assets/images/dsclogo.png','assets/images/apidev_p.jpg',"API Dev Workshop", "SRM DSC",
+      DateTime.parse("2020-02-02 09:00:00Z"),
+      "SIIC, 5th Floor, BEL",0,"https://srmdsc.com/"),
+  Event('assets/images/girlscriptlogo.jpg','assets/images/letspy_p.jpg',"LetsPy", "GirlScript,Chennai",
+      DateTime.parse("2020-03-20 13:00:00Z"),
+      "Hilton",0,"https://www.girlscript.tech/"),
+];
+
 Widget buildEventCard(BuildContext context,List list, int index){
   return Padding(
     padding: const EdgeInsets.only(left:12.0,right:12.0),
@@ -249,26 +268,29 @@ Future<bool> eventDetailDialog(context,List list, index){
   );
 }
 
+Widget searchEvent(query) {
+  final eventSuggestionList = eventsList.where(
+          (p)=>(p.title.toLowerCase().startsWith(query.toLowerCase()))
+          ||(p.organiser.toLowerCase().startsWith(query.toLowerCase()))
+  ).toList();
+
+  if(query.isEmpty)
+    return Center(
+      child: Text(
+        "Start Typing Name or Event/Organiser",
+        style: TextStyle(
+            color: Colors.grey
+        ),
+      ),
+    );
+  else
+    return ListView.builder(
+      itemBuilder: (context,index)=> buildEventCard(context,eventSuggestionList, index),
+      itemCount: eventSuggestionList.length,
+    );
+}
+
 class EventView extends StatelessWidget {
-  final List<Event> eventsList =
-      [
-//        Event("","","", "",DateTime.now(),"",0,""),
-        Event('assets/images/girlscriptlogo.jpg','assets/images/codecru_p.jpg',"Code Crusade", "GirlScript,Chennai",
-          DateTime.parse("2020-02-08 13:00:00Z"),
-          "Home",0,"https://www.girlscript.tech/"),
-        Event('assets/images/kzillalogo.jpg','assets/images/mozohack_p.jpg',"Mozohack Hackathon", "SRMKzilla",
-            DateTime.parse("2020-03-20 09:00:00Z"),
-            "SIIC, 5th Floor, BEL",0,"https://srmdsc.com/"),
-        Event('assets/images/girlscriptlogo.jpg','assets/images/soc_p.jpg',"Summer of Code", "GirlScript,Chennai",
-            DateTime.parse("2020-02-14 13:00:00Z"),
-            "Office",0,"https://www.girlscript.tech/"),
-        Event('assets/images/dsclogo.png','assets/images/apidev_p.jpg',"API Dev Workshop", "SRM DSC",
-            DateTime.parse("2020-02-02 09:00:00Z"),
-            "SIIC, 5th Floor, BEL",0,"https://srmdsc.com/"),
-        Event('assets/images/girlscriptlogo.jpg','assets/images/letspy_p.jpg',"LetsPy", "GirlScript,Chennai",
-            DateTime.parse("2020-03-20 13:00:00Z"),
-            "Hilton",0,"https://www.girlscript.tech/"),
-      ];
 
   @override
   Widget build(BuildContext context) {
@@ -278,14 +300,10 @@ class EventView extends StatelessWidget {
           eventsHeaderCard(context),
           new Expanded(
               child: ListView.builder(
+                padding: EdgeInsets.only(bottom: 36),
                 itemCount: eventsList.length,
-                itemBuilder: (BuildContext context, int index){
-                  if(index==0){
-                    return buildEventCard(context,eventsList, index);
-                  }
-                  else
-                    return buildEventCard(context,eventsList, index);
-                  },
+                itemBuilder: (BuildContext context, int index)=>
+                    buildEventCard(context, eventsList, index),
               ),
           ),
         ],
@@ -392,32 +410,16 @@ class EventSearch extends SearchDelegate<Event>{
   @override
   Widget buildResults(BuildContext context) {
     // TODO: implement buildResults
-    return null;
+    return searchEvent(query);
   }
 
   @override
   Widget buildSuggestions(BuildContext context) {
     // TODO: implement buildSuggestions
 
-    final eventSuggestionList = eventsList.where(
-            (p)=>(p.title.toLowerCase().startsWith(query.toLowerCase()))
-                ||(p.organiser.toLowerCase().startsWith(query.toLowerCase()))
-        ).toList();
+    return searchEvent(query);
 
-    if(query.isEmpty)
-      return Center(
-        child: Text(
-            "Start Typing Name or Event/Organiser",
-            style: TextStyle(
-              color: Colors.grey
-            ),
-        ),
-      );
-    else
-      return ListView.builder(
-        itemBuilder: (context,index)=> buildEventCard(context,eventSuggestionList, index),
-        itemCount: eventSuggestionList.length,
-    );
+
   }
 
 }
