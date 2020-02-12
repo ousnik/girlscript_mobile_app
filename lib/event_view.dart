@@ -30,15 +30,15 @@ class EventView extends StatelessWidget {
     return Container(
       child: Column(
         children: <Widget>[
-//          TextField(
-//            decoration: InputDecoration(
-//              contentPadding: EdgeInsets.all(10.0),
-//              hintText: 'Search Event',
-//            ),
-//            onChanged: (string) {
-//
-//            }
-//          ),
+          TextField(
+            decoration: InputDecoration(
+              contentPadding: EdgeInsets.all(10.0),
+              hintText: 'Search Event',
+            ),
+            onChanged: (string) {
+
+            }
+          ),
           new Expanded(
               child: ListView.builder(
                 itemCount: eventsList.length,
