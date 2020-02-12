@@ -252,7 +252,7 @@ Future<bool> eventDetailDialog(context,List list, index){
 class EventView extends StatelessWidget {
   final List<Event> eventsList =
       [
-        Event("","","", "",DateTime.now(),"",0,""),
+//        Event("","","", "",DateTime.now(),"",0,""),
         Event('assets/images/girlscriptlogo.jpg','assets/images/codecru_p.jpg',"Code Crusade", "GirlScript,Chennai",
           DateTime.parse("2020-02-08 13:00:00Z"),
           "Home",0,"https://www.girlscript.tech/"),
@@ -275,12 +275,13 @@ class EventView extends StatelessWidget {
     return Container(
       child: Column(
         children: <Widget>[
+          eventsHeaderCard(context),
           new Expanded(
               child: ListView.builder(
                 itemCount: eventsList.length,
                 itemBuilder: (BuildContext context, int index){
                   if(index==0){
-                    return eventsHeaderCard(context);
+                    return buildEventCard(context,eventsList, index);
                   }
                   else
                     return buildEventCard(context,eventsList, index);
@@ -294,7 +295,7 @@ class EventView extends StatelessWidget {
 
   Widget eventsHeaderCard(context){
     return Padding(
-      padding: const EdgeInsets.fromLTRB(12.0,10.0,12.0,8.0),
+      padding: const EdgeInsets.fromLTRB(4.0,8.0,4.0,8.0),
       child: Card(
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(15.0),
@@ -320,8 +321,12 @@ class EventView extends StatelessWidget {
                         color: Colors.white),
                     child: Icon(Icons.search)
                 ),
-                onPressed: ()
-                {showSearch(context: context, delegate: EventSearch());},
+                onPressed: () {
+                  showSearch(
+                      context: context,
+                      delegate: EventSearch(),
+                  );
+                },
               ),
             ],
           ),
@@ -355,15 +360,7 @@ class EventSearch extends SearchDelegate<Event>{
         "Hilton",0,"https://www.girlscript.tech/"),
   ];
 
-  final List<Event> recentEventsList =
-  [
-    Event('assets/images/girlscriptlogo.jpg','assets/images/codecru_p.jpg',"Code Crusade", "GirlScript,Chennai",
-        DateTime.parse("2020-02-08 13:00:00Z"),
-        "Home",0,"https://www.girlscript.tech/"),
-    Event('assets/images/kzillalogo.jpg','assets/images/mozohack_p.jpg',"Mozohack Hackathon", "SRMKzilla",
-        DateTime.parse("2020-03-20 09:00:00Z"),
-        "SIIC, 5th Floor, BEL",0,"https://srmdsc.com/"),
-  ];
+
 
   @override
   List<Widget> buildActions(BuildContext context) {
@@ -402,14 +399,22 @@ class EventSearch extends SearchDelegate<Event>{
   Widget buildSuggestions(BuildContext context) {
     // TODO: implement buildSuggestions
 
-    final eventSuggestionList = query.isEmpty
-        ? recentEventsList
-        : eventsList.where(
+    final eventSuggestionList = eventsList.where(
             (p)=>(p.title.toLowerCase().startsWith(query.toLowerCase()))
                 ||(p.organiser.toLowerCase().startsWith(query.toLowerCase()))
         ).toList();
 
-    return ListView.builder(
+    if(query.isEmpty)
+      return Center(
+        child: Text(
+            "Start Typing Name or Event/Organiser",
+            style: TextStyle(
+              color: Colors.grey
+            ),
+        ),
+      );
+    else
+      return ListView.builder(
         itemBuilder: (context,index)=> buildEventCard(context,eventSuggestionList, index),
         itemCount: eventSuggestionList.length,
     );
