@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'pages.dart';
 import 'event_view.dart';
 import 'about_view.dart';
+import 'project_view.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -39,6 +40,8 @@ class _HomeState extends State<Home> {
           backgroundColor: Color(0xFFE0E0E0),
           onTap: onTabTapped,
           selectedItemColor: Colors.black,
+          selectedFontSize: 14,
+          unselectedFontSize: 12,
           currentIndex: _currentIndex,
           elevation: 16.0,
           items: [

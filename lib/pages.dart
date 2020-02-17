@@ -7,13 +7,6 @@ class HomeView extends StatelessWidget {
   }
 }
 
-class ProjectView extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return girlScriptLogo();
-  }
-}
-
 class TeamView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {

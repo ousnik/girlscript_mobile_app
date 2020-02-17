@@ -46,9 +46,6 @@ flutter:
     - assets/images/
 
   fonts:
-    - family: Comfortaa
-      fonts:
-        - asset: assets/fonts/Comfortaa.ttf
     - family: Montserrat
       fonts:
         - asset: assets/fonts/Montserrat/Montserrat-Regular.ttf

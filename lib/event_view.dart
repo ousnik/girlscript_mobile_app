@@ -67,7 +67,12 @@
                     padding: const EdgeInsets.only(top:16.0),
                     child: Row(
                       children: <Widget>[
-                        Text(list[index].title, style: new TextStyle(fontSize: 25.0)),
+                        Text(list[index].title,
+                            style: TextStyle(
+                                fontSize: 20.0,
+                                fontWeight: FontWeight.w600
+                            )
+                        ),
                       ],
                     ),
                   ),
@@ -101,7 +106,7 @@
                   ),
                   Row(
                     children: <Widget>[
-                      Text("Time: ${DateFormat('jm').format(list[index].datetime)
+                      Text("Time: ${DateFormat('jm').format (list[index].datetime)
                           .toString()}", style: new TextStyle(fontSize: 14.0)),
                     ],
                   ),
@@ -188,8 +193,7 @@
                               borderRadius: BorderRadius.circular(45),
                               border:  Border.all(
                                 color: Colors.transparent,
-                                style:
-                                BorderStyle.solid,
+                                style: BorderStyle.solid,
                                 width: 2.0,
                               ),
                             ),
@@ -206,16 +210,14 @@
                         Text(
                           list[index].title,
                           style: TextStyle(
-                            fontFamily: 'Comfortaa',
                             fontSize: 24,
-                            fontWeight: FontWeight.bold,
+                            fontWeight: FontWeight.w500,
                           ),
                         ),
                         Text(
                           list[index].organiser,
                           style: TextStyle(
-                            fontFamily: 'Comfortaa',
-                            fontWeight: FontWeight.bold,
+                            fontFamily: 'Montserrat',
                             fontSize: 12,
                           ),
                         ),
@@ -224,15 +226,6 @@
                   ),
                   Flexible(
                     flex: 12,
-  //                  child: PhotoView.customChild(child: ClipRRect(
-  //                    borderRadius: BorderRadius.only(
-  //                      topLeft: Radius.circular(25.0),
-  //                      topRight: Radius.circular(25.0),
-  //                      bottomRight: Radius.circular(25.0),
-  //                    ),
-  //                    child: Image.asset(list[index].poster),
-  //                  ),
-  //            childSize: Size(double.infinity, double.infinity) ),
                     child: Image.asset(list[index].poster),
                   ),
                   Flexible(
@@ -243,18 +236,18 @@
                         children: <Widget>[
                           Text(
                             "Venue: ${list[index].venue}",
-                            style: TextStyle(fontFamily: 'Comfortaa',fontWeight: FontWeight.bold),
+                            style: TextStyle(fontWeight: FontWeight.w600),
                           ),
                           Padding(
                             padding: const EdgeInsets.only(top:4.0,bottom:4.0),
                             child: Text(
                               "Date: ${DateFormat('dd/MM/yy').format(list[index].datetime)}",
-                              style: TextStyle(fontFamily: 'Comfortaa',fontWeight: FontWeight.bold),
+                              style: TextStyle(fontWeight: FontWeight.w600),
                             ),
                           ),
                           Text(
                             "Time: ${DateFormat('jm').format(list[index].datetime)}",
-                            style: TextStyle(fontFamily: 'Comfortaa',fontWeight: FontWeight.bold),
+                            style: TextStyle(fontWeight: FontWeight.w600),
                           ),
                         ],
                       ),
@@ -302,42 +295,38 @@
 
   Widget eventsHeaderCard(context){
     return Padding(
-      padding: const EdgeInsets.fromLTRB(4.0,8.0,4.0,8.0),
-      child: Card(
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(15.0),
-        ),
-        elevation: 4,
-        color: Colors.black,
-        child: Padding(
-          padding: const EdgeInsets.all(24.0),
-          child: Row(
-            children: <Widget>[
-              Text(
-                "EVENTS",
+      padding: const EdgeInsets.only(top: 40.0,bottom: 40.0),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+
+        children: <Widget>[
+          RichText(
+            textAlign: TextAlign.center,
+            text: TextSpan(
                 style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 30,
-                  fontFamily: 'Comfortaa',
+                  fontWeight: FontWeight.bold,
+                  fontSize: 36,
                 ),
-              ),
-              Spacer(),
-              IconButton(
-                icon: IconTheme(
-                    data: new IconThemeData(
-                        color: Colors.white),
-                    child: Icon(Icons.search)
-                ),
-                onPressed: () {
-                  showSearch(
-                    context: context,
-                    delegate: EventSearch(),
-                  );
-                },
-              ),
-            ],
+                children: [
+                  TextSpan(text: 'EVENTS', style: TextStyle(color: Colors.black)),
+
+                ]
+            ),
           ),
-        ),
+          IconButton(
+            icon: IconTheme(
+                data: new IconThemeData(
+                    color: Colors.black),
+                child: Icon(Icons.search)
+            ),
+            onPressed: () {
+              showSearch(
+                context: context,
+                delegate: EventSearch(),
+              );
+            },
+          ),
+        ],
       ),
     );
   }
@@ -414,8 +403,9 @@
 
     @override
     Widget build(BuildContext context) {
-      return Container(
-        child: Column(
+      return Scaffold(
+        backgroundColor: Colors.white,
+        body: Column(
           children: <Widget>[
             eventsHeaderCard(context),
             new Expanded(

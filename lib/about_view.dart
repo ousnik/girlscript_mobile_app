@@ -1,8 +1,7 @@
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-String summary = '''GirlScript is a section-8 NON PROFIT company registered under the government of India on the 2nd of June, 2017. GirlScript is open for all organisation and supports beginners in technology and programming. It supports diversity by reserving 50% seats for women & lgbtq in all it's programs worldwide.''';
+String summary = '''GirlScript is a section-8 NON PROFIT company registered under the government of India on the 2nd of June, 2017. GirlScript is open for all organisation and supports beginners in technology and programming. It supports diversity by reserving 50% seats for women & LGBTQ in all it's programs worldwide.''';
 
 Widget _goalcard(color,goalText) {
   return Padding(
@@ -87,7 +86,7 @@ class AboutView extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: <Widget>[
                     Padding(
-                      padding: const EdgeInsets.all(24.0),
+                      padding: const EdgeInsets.all(32.0),
                       child: RichText(
                         textAlign: TextAlign.center,
                         text: TextSpan(
