@@ -21,24 +21,14 @@ class TeamView extends StatelessWidget {
   }
 }
 
-class AboutView extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return girlScriptLogo();
-  }
-}
-
 Widget girlScriptLogo(){
   return Container(
-    color: Color(0xFFE44C25),
+    color: Color(0xFF000000),
     child: Center(
       child: Container(
-        child: Hero(
-          tag: 'lg',
-          child: CircleAvatar(
-            backgroundImage: ExactAssetImage('assets/images/girlscriptlogo.jpg'),
-            radius: 45,
-          ),
+        child: CircleAvatar(
+          backgroundImage: ExactAssetImage('assets/images/girlscriptlogo.jpg'),
+          radius: 45,
         ),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(45),

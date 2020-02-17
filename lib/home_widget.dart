@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'pages.dart';
 import 'event_view.dart';
-
+import 'about_view.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -24,14 +24,15 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.black,
         title: Text("GirlScript"),
       ),
       body: _children[_currentIndex],
       bottomNavigationBar: BottomNavigationBar(
-
           type: BottomNavigationBarType.fixed,
           backgroundColor: Color(0xFFE0E0E0),
           onTap: onTabTapped,
+          selectedItemColor: Colors.black,
           currentIndex: _currentIndex,
           elevation: 16.0,
           items: [
