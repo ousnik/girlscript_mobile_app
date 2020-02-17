@@ -1,4 +1,55 @@
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
+
+  _launchURL1() async {
+  const url='https://www.facebook.com/girlscriptchennai/';
+  if (await canLaunch(url)) {
+    await launch(url);
+  } else {
+    throw 'Could not launch $url';
+  }
+}
+  _launchURL2() async {
+  const url='https://www.instagram.com/girlscriptchennai/';
+  if (await canLaunch(url)) {
+    await launch(url);
+  } else {
+    throw 'Could not launch $url';
+  }
+}
+  _launchURL3() async {
+  const url='https://www.whatsapp.com/';
+  if (await canLaunch(url)) {
+    await launch(url);
+  } else {
+    throw 'Could not launch $url';
+  }
+}
+  _launchURL4() async {
+  const url='https://github.com/girlscriptchennai';
+  if (await canLaunch(url)) {
+    await launch(url);
+  } else {
+    throw 'Could not launch $url';
+  }
+}
+
+Widget projectCardBuilder(title,description) {
+  return Card(
+    child: Column(
+      children: <Widget>[
+        Text(
+            title,
+            style: TextStyle(
+              fontWeight: FontWeight.bold
+            ),
+        ),
+        Divider(),
+        Text(description)
+      ],
+    ),
+  );
+}
 
 class ProjectView extends StatelessWidget {
   @override
@@ -30,31 +81,34 @@ class ProjectView extends StatelessWidget {
             ),
             Padding(
               padding: const EdgeInsets.only(left: 24.0, right: 24.0),
-              child: Card(
-                elevation: 18,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(15.0),
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.all(24.0),
-                  child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: <Widget>[
-                      Container(
-                          height: 50,
-                          width: 50,
-                          child: Image.asset('assets/images/GitHub_link.png')
-                      ),
-                      Text(
-                          'TAKE A LOOK AT OUR PROJECTS',
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 12,
-                          ),
-                      )
-                    ],
+              child: InkWell(
+                child: Card(
+                  elevation: 18,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(15.0),
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.all(24.0),
+                    child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: <Widget>[
+                        Container(
+                            height: 50,
+                            width: 50,
+                            child: Image.asset('assets/images/GitHub_link.png')
+                        ),
+                        Text(
+                            'TAKE A LOOK AT OUR PROJECTS',
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 12,
+                            ),
+                        )
+                      ],
+                    ),
                   ),
                 ),
+                onTap: _launchURL4,
               ),
             ),
             Padding(
@@ -92,7 +146,7 @@ class ProjectView extends StatelessWidget {
                           textAlign: TextAlign.center,
                           style: TextStyle(
                             color: Colors.white,
-                            fontWeight: FontWeight.w200,
+                            fontWeight: FontWeight.w300,
                             fontSize: 18,
                           ),
                         ),
@@ -100,20 +154,29 @@ class ProjectView extends StatelessWidget {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: <Widget>[
-                          Container(
-                              height: 50,
-                              width: 50,
-                              child: Image.asset('assets/images/fb_link.png')
+                          InkWell(
+                            child: Container(
+                                height: 50,
+                                width: 50,
+                                child: Image.asset('assets/images/fb_link.png')
+                            ),
+                            onTap: _launchURL1,
                           ),
-                          Container(
-                              height: 50,
-                              width: 50,
-                              child: Image.asset('assets/images/ig_link.png')
+                          InkWell(
+                            child: Container(
+                                height: 50,
+                                width: 50,
+                                child: Image.asset('assets/images/ig_link.png')
+                            ),
+                            onTap: _launchURL2,
                           ),
-                          Container(
-                              height: 50,
-                              width: 50,
-                              child: Image.asset('assets/images/WhatsApp_link.png')
+                          InkWell(
+                            child: Container(
+                                height: 50,
+                                width: 50,
+                                child: Image.asset('assets/images/WhatsApp_link.png')
+                            ),
+                            onTap: _launchURL3,
                           ),
                         ],
                       )
@@ -122,6 +185,7 @@ class ProjectView extends StatelessWidget {
                 ),
               ),
             ),
+//            projectCardBuilder('PROJECT TITLE', 'ajsdjasdbasjkdbasjkdbasjkdbaskjdbaskjbdaskjdb')
           ],
         ),
       ),
