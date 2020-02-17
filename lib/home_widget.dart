@@ -24,8 +24,14 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        leading:  Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Image.asset(
+              "assets/images/gslogo.png",
+            )
+        ),
         backgroundColor: Colors.black,
-        title: Text("GirlScript"),
+        title: Text("GirlScript Chennai"),
       ),
       body: _children[_currentIndex],
       bottomNavigationBar: BottomNavigationBar(

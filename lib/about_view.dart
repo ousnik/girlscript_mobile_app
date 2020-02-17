@@ -119,7 +119,7 @@ class AboutView extends StatelessWidget {
             ),
 
             Padding(
-              padding: const EdgeInsets.only(top:32.0,bottom:32.0),
+              padding: const EdgeInsets.only(top:46.0,bottom:32.0),
               child: RichText(
                 textAlign: TextAlign.center,
                 text: TextSpan(

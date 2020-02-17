@@ -26,19 +26,9 @@ Widget girlScriptLogo(){
     color: Color(0xFF000000),
     child: Center(
       child: Container(
-        child: CircleAvatar(
-          backgroundImage: ExactAssetImage('assets/images/girlscriptlogo.jpg'),
-          radius: 45,
-        ),
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(45),
-          border:  Border.all(
-            color: Colors.white,
-            style:
-            BorderStyle.solid,
-            width: 2.0,
-          ),
-        ),
+        height: 200,
+        width: 200,
+        child: Image.asset('assets/images/gslogo.png')
       ),
     ),
   );
