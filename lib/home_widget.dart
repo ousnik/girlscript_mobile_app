@@ -32,7 +32,21 @@ class _HomeState extends State<Home> {
             )
         ),
         backgroundColor: Colors.black,
-        title: Text("GirlScript Chennai"),
+        title: RichText(
+          textAlign: TextAlign.center,
+          text: TextSpan(
+              style: TextStyle(
+                fontFamily: 'Montserrat',
+                fontWeight: FontWeight.bold,
+                fontSize: 18,
+              ),
+              children: [
+                TextSpan(text: 'GirlScript ', style: TextStyle(color: Colors.white)),
+                TextSpan(text: 'Chennai'
+                    '', style: TextStyle(color: Colors.deepOrange)),
+              ]
+          ),
+        ) ,
       ),
       body: _children[_currentIndex],
       bottomNavigationBar: BottomNavigationBar(

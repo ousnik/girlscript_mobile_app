@@ -316,7 +316,7 @@
           IconButton(
             icon: IconTheme(
                 data: new IconThemeData(
-                    color: Colors.black),
+                    color: Colors.deepOrange),
                 child: Icon(Icons.search)
             ),
             onPressed: () {

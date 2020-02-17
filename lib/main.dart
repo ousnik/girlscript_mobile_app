@@ -10,7 +10,7 @@ class MyApp extends StatelessWidget {
       title: "GirlScript",
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primarySwatch: Colors.teal,
+        primarySwatch: Colors.deepOrange,
         fontFamily: 'Montserrat',
       ),
       home: Home(),
