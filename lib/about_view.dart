@@ -91,19 +91,20 @@ class AboutView extends StatelessWidget {
                         textAlign: TextAlign.center,
                         text: TextSpan(
                             style: TextStyle(
-                              fontFamily: 'Roboto',
+                              fontFamily: 'Montserrat',
                               fontWeight: FontWeight.bold,
                               fontSize: 18,
                             ),
                             children: [
                               TextSpan(text: 'We are India\'s  ', style: TextStyle(color: Colors.black)),
-                              TextSpan(text: 'First & Biggest ', style: TextStyle(color: Colors.deepOrange)),
-                              TextSpan(text: 'Indian Origin Technical Community', style: TextStyle(color: Colors.black)),
+                              TextSpan(text: 'FIRST & BIGGEST ', style: TextStyle(color: Colors.deepOrange)),
+                              TextSpan(text: 'Technical Community', style: TextStyle(color: Colors.black)),
                               TextSpan(text: '\n\n'),
                               TextSpan(
                                   text: summary,
                                   style: TextStyle(
-                                      fontWeight:FontWeight.normal ,
+                                      fontFamily:'Montserrat',
+                                      fontWeight:FontWeight.w400 ,
                                       color: Color(0xFF677C91),
                                       fontSize: 14,
                                   )

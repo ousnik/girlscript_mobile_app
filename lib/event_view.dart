@@ -1,4 +1,3 @@
-  import 'package:flutter/cupertino.dart';
   import 'package:flutter/material.dart';
   import 'package:intl/intl.dart';
   import 'package:url_launcher/url_launcher.dart';
@@ -296,35 +295,37 @@
   Widget eventsHeaderCard(context){
     return Padding(
       padding: const EdgeInsets.only(top: 40.0,bottom: 40.0),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-
+      child: Stack(
         children: <Widget>[
-          RichText(
-            textAlign: TextAlign.center,
-            text: TextSpan(
+          Align(
+            alignment: Alignment.center,
+            child: Text(
+                'EVENTS',
                 style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 36,
-                ),
-                children: [
-                  TextSpan(text: 'EVENTS', style: TextStyle(color: Colors.black)),
-
-                ]
+                    fontWeight: FontWeight.bold,
+                    fontSize: 36,
+                    color: Colors.black
+                )
             ),
           ),
-          IconButton(
-            icon: IconTheme(
-                data: new IconThemeData(
-                    color: Colors.deepOrange),
-                child: Icon(Icons.search)
+          Padding(
+            padding: const EdgeInsets.only(right:32.0),
+            child: Align(
+              alignment: Alignment.centerRight,
+              child: IconButton(
+                icon: IconTheme(
+                    data: new IconThemeData(
+                        color: Colors.deepOrange),
+                    child: Icon(Icons.search)
+                ),
+                onPressed: () {
+                  showSearch(
+                    context: context,
+                    delegate: EventSearch(),
+                  );
+                },
+              ),
             ),
-            onPressed: () {
-              showSearch(
-                context: context,
-                delegate: EventSearch(),
-              );
-            },
           ),
         ],
       ),
