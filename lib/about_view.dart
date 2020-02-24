@@ -1,4 +1,5 @@
 
+import 'package:drawing_animation/drawing_animation.dart';
 import 'package:flutter/material.dart';
 
 String summary = '''GirlScript is a section-8 NON PROFIT company registered under the government of India on the 2nd of June, 2017. GirlScript is open for all organisation and supports beginners in technology and programming. It supports diversity by reserving 50% seats for women & LGBTQ in all it's programs worldwide.''';
@@ -117,7 +118,6 @@ class AboutView extends StatelessWidget {
                 ),
               ),
             ),
-
             Padding(
               padding: const EdgeInsets.only(top:46.0,bottom:32.0),
               child: RichText(
@@ -170,7 +170,14 @@ class AboutView extends StatelessWidget {
                 ),
               ],
             ),
-
+            Padding(
+              padding: const EdgeInsets.all(12.0),
+//              child: AnimatedDrawing.svg(
+//                  'assets/images/teamtreeanimation.svg',
+//                run: true,
+//                duration: new Duration(seconds: 5),
+//              ),
+            )
           ],
         ),
       ),

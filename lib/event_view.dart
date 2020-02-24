@@ -116,12 +116,12 @@
                 children: <Widget>[
                   Row(
                     children: <Widget>[
-                      MaterialButton(
-                          child: Text("Register",style: new TextStyle(color: Colors.white)),
-                          color: Colors.black,
-                          elevation: 2,
-                          onPressed: _launchURL
-                      ),
+                                          MaterialButton(
+                                              child: Text("Register",style: new TextStyle(color: Colors.white)),
+                                              color: Colors.black,
+                                              elevation: 2,
+                                              onPressed: () => launch(list[index].link)
+                                          ),
                     ],
                   ),
                   Row(
@@ -137,15 +137,6 @@
         ],
       ),
     );
-  }
-
-  _launchURL() async {
-    const url='https://www.girlscript.tech/';
-    if (await canLaunch(url)) {
-      await launch(url);
-    } else {
-      throw 'Could not launch $url';
-    }
   }
 
   Future<bool> eventDetailDialog(context,List list, index){
@@ -259,7 +250,7 @@
                         child: Text("Register",style: new TextStyle(color: Colors.white)),
                         color: Colors.black,
                         elevation: 2,
-                        onPressed: _launchURL
+                        onPressed: () => launch(list[index].link),
                     ),
                   ),
                 ],
@@ -411,7 +402,6 @@
             eventsHeaderCard(context),
             new Expanded(
                 child: ListView.builder(
-
                   padding: EdgeInsets.only(bottom: 36),
                   itemCount: eventsList.length,
                   itemBuilder: (BuildContext context, int index)=>
