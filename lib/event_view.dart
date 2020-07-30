@@ -99,8 +99,8 @@
                   ),
                   Row(
                     children: <Widget>[
-                      Text("Date: ${DateFormat('EEEE, dd/MM/yy').format(list[index].datetime)
-                          .toString()}", style: new TextStyle(fontSize: 14.0)),
+                        Text("Date: ${DateFormat('EEEE, dd/MM/yy').format(list[index].datetime)
+                            .toString()}", style: new TextStyle(fontSize: 14.0)),
                     ],
                   ),
                   Row(
